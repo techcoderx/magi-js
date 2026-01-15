@@ -36,7 +36,7 @@ export abstract class MagiWalletL2Base extends MagiWalletBase {
   abstract signTx(shell: TxSigningShell): Promise<TxSigned>
 
   async signAndBroadcastTx(tx: MagiOperation[], keyType: KeyTypes): Promise<Result> {
-    const nonceErr = await this.fetchNonce()
+    const nonceErr = await this.refreshNonce()
     if (!!nonceErr) return nonceErr
 
     const encodedOps = tx.map((op) => ({ type: op.type, payload: encode(op.payload) }))

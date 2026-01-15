@@ -23,6 +23,11 @@ export enum Asset {
   shbd = 'hbd_savings'
 }
 
+export enum Wallet {
+  Hive = 'hive',
+  Ethereum = 'evm'
+}
+
 export interface OpFer {
   type: 'consensus_stake' | 'consensus_unstake' | 'stake_hbd' | 'transfer' | 'unstake_hbd' | 'withdraw'
   payload: {

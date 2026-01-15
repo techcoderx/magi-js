@@ -55,7 +55,7 @@ export abstract class MagiWalletBase implements MagiWallet {
     else return this.fer('unstake_hbd', to ?? this.getUser(true)!, amount, Asset.hbd, memo)
   }
 
-  async fetchNonce() {
+  async refreshNonce() {
     if (typeof this.nonce === 'undefined') {
       try {
         this.nonce = await getNonce(this.client, this.getUser(true)!)
@@ -68,7 +68,6 @@ export abstract class MagiWalletBase implements MagiWallet {
 }
 
 export interface MagiWallet {
-  getUser(prefix?: boolean): string | undefined
   signAndBroadcastTx(tx: MagiOperation[], keyType: KeyTypes): Promise<Result>
   call(contractId: string, action: string, payload: any, rc_limit: number, intents: Intent[], keyType: KeyTypes): Promise<Result>
   transfer(to: string, amount: number, currency: Asset, memo?: string): Promise<Result>
