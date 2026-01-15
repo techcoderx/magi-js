@@ -1,12 +1,12 @@
 import { encode } from '@ipld/dag-cbor'
 import { encodePayload } from 'dag-jose-utils'
-import { convertCBORToEIP712TypedData } from '../../lib/eip712.js'
-import { MagiClient } from '../../lib/client.js'
-import { TxSigningShell, TxSigned } from '../../types.js'
-import { MagiWalletL2Base } from '../offchain.js'
+import { convertCBORToEIP712TypedData } from '../lib/eip712.js'
+import { MagiClient } from '../lib/client.js'
+import { TxSigningShell, TxSigned } from '../types.js'
+import { MagiWalletL2Base } from './offchain.js'
 import type { Client } from 'viem'
 import { signTypedData } from 'viem/actions'
-import { MagiError } from '../../lib/error.js'
+import { MagiError } from '../lib/error.js'
 
 export class MagiWalletViem extends MagiWalletL2Base {
   wallet: Client
